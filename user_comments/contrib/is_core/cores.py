@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import gettext_lazy
 
 from is_core.generic_views.inlines.inline_objects_views import TabularInlineObjectsView
 
@@ -12,7 +12,7 @@ from is_core.generic_views.detail_views import DjangoDetailFormView
 
 class CommentUiForm(SmartModelForm):
 
-    comment = forms.CharField(label=ugettext_lazy('add comment'), required=False, widget=forms.Textarea())
+    comment = forms.CharField(label=gettext_lazy('add comment'), required=False, widget=forms.Textarea())
 
     def _post_save(self, obj):
         super()._post_save(obj)
@@ -29,9 +29,9 @@ class CommentObjectsView(TabularInlineObjectsView):
 
     model = Comment
     fields = (
-        ('author', ugettext_lazy('Author')),
-        ('created_at', ugettext_lazy('Created at')),
-        ('comment', ugettext_lazy('Comment')),
+        ('author', gettext_lazy('Author')),
+        ('created_at', gettext_lazy('Created at')),
+        ('comment', gettext_lazy('Comment')),
     )
 
     def get_objects(self):
@@ -57,7 +57,7 @@ class CommentCoreMixin:
     ui_detail_view = DetailCommentFormView
 
     notes_fieldset = (
-        (ugettext_lazy('Comments'), {
+        (gettext_lazy('Comments'), {
             'fieldsets': (
                 (None, {'inline_view': CommentObjectsView}),
                 (None, {'fields': ('comment',)}),
