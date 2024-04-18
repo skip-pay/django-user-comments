@@ -8,7 +8,7 @@ setup(
     author_email='matllubos@gmail.com',
     packages=find_packages(),
     install_requires=[
-        'skip-django-chamber @ git+https://github.com/skip-pay/django-chamber@tda/chore/django_bump',
+        'skip-django-chamber>=0.7.2',
     ],
     include_package_data=True,
     zip_safe=False,
